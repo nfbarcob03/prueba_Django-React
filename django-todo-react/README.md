@@ -2,14 +2,15 @@
 Este proyecto permite tener una base de datos de clientes, productos y productos especificados para cada cliente y realizar ordenes de compra para los clientes a los productos que tiene permitidos.
 Este propyecto esta desarrollado con python (framwork Django - Django rest framework) para el backend y javascript (React.js) para el fronted siendo una aplicación desacoplada donde el fronted y el backend se comunican por servicios API-REST. La base de datos se gestiona con Postgresql
 
-## Requerimientos:
+## Requerimientos
+
 	- instalar postgresql como gestor de bases de datos (https://www.postgresql.org/download/)
 	- instalar python superior a 3.7
 	- instalar Git para clonar el repositorio
 
 ## Como montar la aplicación
 
-### 0. Clonar el reposiotrio:
+### 0. Clonar el reposiotrio
 
 	Esto lo puede hacer haciendo 
 	
