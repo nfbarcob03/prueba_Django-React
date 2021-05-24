@@ -9,10 +9,16 @@ Este propyecto esta desarrollado con python (framwork Django - Django rest frame
 
 ## Como montar la aplicación
 
-0. Clonar el reposiotrio:
-	Esto lo puede hacer haciendo ```git clone https://github.com/nfbarcob03/prueba_Django-React.git```
+### 0. Clonar el reposiotrio:
+
+	Esto lo puede hacer haciendo 
+	
+	```
+	git clone https://github.com/nfbarcob03/prueba_Django-React.git
+	```
 
 ### 1. Montar la base de datos:
+
 	La aplicación esta diseñada para interactuar con una base de datos en postgresql. El archivo "SCRIPT_CREACION_BD.sql" tiene las sentencias
 	para la creacion de la base de datos junto con las tablas necesarias que conforman el modelo de datos y registros mock para las tablas Cliente,
 	Producto y Producto_Permitido.
