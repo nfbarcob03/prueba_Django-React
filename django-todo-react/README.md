@@ -55,6 +55,7 @@ DATABASES = {
 #### Servicios API-REST expuestos por el backend:
 Actualmente el backend cuenta con los siguietes servicios API-REST
 - **CreateOrden**: Este metodo es el empleado para generar una orden para un cliente y sus respectivas orden_detalle. Se le envian parametros como id del cliente y lista de id de productos para generar la orden. El metodo verifica que los productos pedidos esten relacionados en el modelo ProductoPermitido (tabla producto_permitido) con el cliente al que se le hace la orden, tambien verifica que la cantidad de articulos a pedir no sea mayor a 5. Es un meotod POST que lleva un cuerpo (body) en formato json como el que se muestra a continuación:
+	
 	```{
 		"cliente":"1", 
 		"direccion_entrega":"calle 51 # 26 -19",
@@ -68,11 +69,11 @@ Actualmente el backend cuenta con los siguietes servicios API-REST
 	- productos: lista de los id de los productos para la orden. El metodo valida que no sea superior a 5 productos y que el cliente si tenga permitido ordenar esos productos.
 	- observaciones: son las observaciones que se hacen en el detalle de cada producto.
 	
-	URL: http://127.0.0.1:8000/orden/crearOrden/
+	URL: ```http://127.0.0.1:8000/orden/crearOrden/```
 	
 - **OrdenFilterByDate**: Este metodo permite consultar todas las ordenes disponibles en la tabla y modelo Orden, consultarlas filtradas por Cliente y/o apartir de una fecha, o hasta una fecha o en un rango de fechas. Es un metodo GET, por tanto los parametros se pasan por la URL de la siguiente forma:
-	- http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/ -----> Para consultar todas las ordenes del sistema
-	- http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1 -----> Para consultar las ordenes del cliente con id 1
-	- http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&start_date=2021-05-23 16:07:08 ---> Para consultar todas las ordenes del clinete con id 1 a partir de la fecha start_date
-	- http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&end_date=2021-05-23 21:07:55 ----> Para consultar todas las ordenes del cliente con id 1 hasta la fecha end_date
-	- http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&start_date=2021-05-23 16:07:08&end_date=2021-05-23 21:07:55 --->Para consultar todas las ordenes del cliente con id 1 desde la fecha start_date hasta la fecha end_date
+	- ```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/ ```-----> Para consultar todas las ordenes del sistema
+	- ```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1 ```-----> Para consultar las ordenes del cliente con id 1
+	- ```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&start_date=2021-05-23 16:07:08 ```---> Para consultar todas las ordenes del clinete con id 1 a partir de la fecha start_date
+	- ```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&end_date=2021-05-23 21:07:55 ```----> Para consultar todas las ordenes del cliente con id 1 hasta la fecha end_date
+	- ```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&start_date=2021-05-23 16:07:08&end_date=2021-05-23 21:07:55 ```--->Para consultar todas las ordenes del cliente con id 1 desde la fecha start_date hasta la fecha end_date
