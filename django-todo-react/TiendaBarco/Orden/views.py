@@ -36,6 +36,9 @@ class CreateOrden(APIView):
         now = datetime.now()
         fecha = now.strftime("%Y-%m-%d %H:%M:%S")
         
+        if len(productos) >5:
+            return Response(f"La cantidad de pedidos en la orden excede la maxima permitida. Permitida (5), pedida: {len(productos)}", status=status.HTTP_400_BAD_REQUEST)
+        
         productos_permitidos_cliente_lista_raw = ProductoPermitido.objects.filter(cliente=cliente)
         productos_permitidos_cliente_lista_filter = [producto.producto_id for producto in productos_permitidos_cliente_lista_raw]
         orden_data = {
