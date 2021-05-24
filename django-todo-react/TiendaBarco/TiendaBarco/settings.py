@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'Orden',
     'OrdenDetalle',
     'ProductoPermitido',
+    'django.contrib.admindocs',
     
 ]
 

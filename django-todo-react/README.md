@@ -79,3 +79,8 @@ URL: ```http://127.0.0.1:8000/orden/crearOrden/```
 	- ```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&start_date=2021-05-23 16:07:08 ```---> Para consultar todas las ordenes del clinete con id 1 a partir de la fecha start_date
 	- ```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&end_date=2021-05-23 21:07:55 ```----> Para consultar todas las ordenes del cliente con id 1 hasta la fecha end_date
 	- ```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&start_date=2021-05-23 16:07:08&end_date=2021-05-23 21:07:55 ```--->Para consultar todas las ordenes del cliente con id 1 desde la fecha start_date hasta la fecha end_date
+
+
+Mas información sobre la aplicacion puede enocntrar ingresando al administrador:
+```http://127.0.0.1:8000/admin/```
+```http://127.0.0.1:8000/admin/doc/```

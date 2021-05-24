@@ -20,8 +20,7 @@ from rest_framework import routers
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('orden-detalle/', include('OrdenDetalle.urls')),
-    #path('producto-permitido/', include('ProductoPermitido.urls')),
-    path('orden/', include('Orden.urls')),
+    path('admin/doc/', include('django.contrib.admindocs.urls'), name='documentacion'),
+    path('admin/', admin.site.urls, name='admin'),
+    path('orden/', include('Orden.urls'), name='orden'),
 ]
