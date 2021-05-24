@@ -4,19 +4,19 @@ Este propyecto esta desarrollado con python (framwork Django - Django rest frame
 
 ## Requerimientos
 
-	- instalar postgresql como gestor de bases de datos (https://www.postgresql.org/download/)
-	- instalar python superior a 3.7
-	- instalar Git para clonar el repositorio
+- instalar postgresql como gestor de bases de datos (https://www.postgresql.org/download/)
+- instalar python superior a 3.7
+- instalar Git para clonar el repositorio
 
 ## Como montar la aplicación
 
 ### 0. Clonar el reposiotrio
 
-	Esto lo puede hacer haciendo 
-	
-	```
-	git clone https://github.com/nfbarcob03/prueba_Django-React.git
-	```
+Esto lo puede hacer haciendo 
+
+```
+git clone https://github.com/nfbarcob03/prueba_Django-React.git
+```
 
 ### 1. Montar la base de datos:
 
