@@ -56,12 +56,12 @@ DATABASES = {
 Actualmente el backend cuenta con los siguietes servicios API-REST
 - **CreateOrden**: Este metodo es el empleado para generar una orden para un cliente y sus respectivas orden_detalle. Se le envian parametros como id del cliente y lista de id de productos para generar la orden. El metodo verifica que los productos pedidos esten relacionados en el modelo ProductoPermitido (tabla producto_permitido) con el cliente al que se le hace la orden, tambien verifica que la cantidad de articulos a pedir no sea mayor a 5. Es un meotod POST que lleva un cuerpo (body) en formato json como el que se muestra a continuación:
 	
-	```{
-		"cliente":"1", 
-		"direccion_entrega":"calle 51 # 26 -19",
-		"productos":"[5,2]",
-		"observaciones":"[sin cebolla, sin queso]"
-	}```
+```{
+	"cliente":"1", 
+	"direccion_entrega":"calle 51 # 26 -19",
+	"productos":"[5,2]",
+	"observaciones":"[sin cebolla, sin queso]"
+}```
 	
 	Parametros:
 	- cliente: el id del cliente al que se le desea realizar la orden
