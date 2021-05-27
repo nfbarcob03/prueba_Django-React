@@ -67,145 +67,161 @@ DATABASES = {
 
 #### Servicios API-REST expuestos por el backend:
 Actualmente el backend cuenta con los siguietes servicios API-REST
+
 - **CreateOrden**: Este metodo es el empleado para generar una orden para un cliente y sus respectivas orden_detalle. Se le envian parametros como id del cliente y lista de id de productos para generar la orden. El metodo verifica que los productos pedidos esten relacionados en el modelo ProductoPermitido (tabla producto_permitido) con el cliente al que se le hace la orden, tambien verifica que la cantidad de articulos a pedir no sea mayor a 5. Es un meotod POST que lleva un cuerpo (body) en formato json como el que se muestra a continuación:
- Tipo:POST	
- URL: 
- ```http://127.0.0.1:8000/orden/crearOrden/```
+Tipo:
+	POST	
+URL: 
+	```http://127.0.0.1:8000/orden/crearOrden/```
 BODY
-```
-{
-"cliente":"1", 
-"direccion_entrega":"calle 51 # 26 -19",
-"productos":"[5,2]",
-"observaciones":"[sin cebolla, sin queso]"
-}
-```
+	```
+	{
+	"cliente":"1", 
+	"direccion_entrega":"calle 51 # 26 -19",
+	"productos":"[5,2]",
+	"observaciones":"[sin cebolla, sin queso]"
+	}
+	```
 	
 Parametros:
-- cliente: el id del cliente al que se le desea realizar la orden
-- dirección: dirección de entrga de la orden
-- productos: lista de los id de los productos para la orden. El metodo valida que no sea superior a 5 productos y que el cliente si tenga permitido ordenar esos productos.
-- observaciones: son las observaciones que se hacen en el detalle de cada producto.
+	- cliente: el id del cliente al que se le desea realizar la orden
+	- dirección: dirección de entrga de la orden
+	- productos: lista de los id de los productos para la orden. El metodo valida que no sea superior a 5 productos y que el cliente si tenga permitido ordenar esos productos.
+	- observaciones: son las observaciones que se hacen en el detalle de cada producto.
 
 	
 - **OrdenFilterByDate**: Este metodo permite consultar todas las ordenes disponibles en la tabla y modelo Orden, consultarlas filtradas por Cliente y/o apartir de una fecha, o hasta una fecha o en un rango de fechas. Es un metodo GET, por tanto los parametros se pasan por la URL de la siguiente forma:
-Tipo:GET	
+Tipo:
+	GET	
 URL:
-- ```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/ ```-----> Para consultar todas las ordenes del sistema
-- ```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1 ```-----> Para consultar las ordenes del cliente con id 1
-- ```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&start_date=2021-05-23 16:07:08 ```---> Para consultar todas las ordenes del clinete con id 1 a partir de la fecha start_date
-- ```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&end_date=2021-05-23 21:07:55 ```----> Para consultar todas las ordenes del cliente con id 1 hasta la fecha end_date
-- ```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&start_date=2021-05-23 16:07:08&end_date=2021-05-23 21:07:55 ```--->Para consultar todas las ordenes del cliente con id 1 desde la fecha start_date hasta la fecha end_date
+	```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/ ```-----> Para consultar todas las ordenes del sistema
+	```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1 ```-----> Para consultar las ordenes del cliente con id 1
+	```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&start_date=2021-05-23 16:07:08 ```---> Para consultar todas las ordenes del clinete con id 1 a partir de la fecha start_date
+	```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&end_date=2021-05-23 21:07:55 ```----> Para consultar todas las ordenes del cliente con id 1 hasta la fecha end_date
+	```http://127.0.0.1:8000/orden/filtrarOrdenesByClienteAndFecha/?cliente=1&start_date=2021-05-23 16:07:08&end_date=2021-05-23 21:07:55 ```--->Para consultar todas las ordenes del cliente con id 1 desde la fecha start_date hasta la fecha end_date
 
 
 - **CrearListarClientes**: Este metodo puede ser GET (para listar todos los clientes) o POST (para crear un cliente)
-Tipo: GET.
+Tipo: 
+	GET.
 URL:
-```http://127.0.0.1:8000/cliente/crearListarClientes/ ``` ------>Para listar todos los clientes
- Tipo: POST
+	```http://127.0.0.1:8000/cliente/crearListarClientes/ ``` ------>Para listar todos los clientes
+Tipo: 
+	POST
 URL:
-```http://127.0.0.1:8000/cliente/crearListarClientes/ ``` ------>Para crear nuevo cliente
+	```http://127.0.0.1:8000/cliente/crearListarClientes/ ``` ------>Para crear nuevo cliente
 BODY
-```
-{
-"nombre" : "Juan Carlos Velz",
-"correo" : "jvelñez@gmail.com.co"
-}
-```
+	```
+	{
+	"nombre" : "Juan Carlos Velz",
+	"correo" : "jvelñez@gmail.com.co"
+	}
+	```
 Parametros: 
-- nombre: nombre del cliente
--correo: coreo del cliente
+	- nombre: nombre del cliente
+	-correo: coreo del cliente
  
- - **ClienteDetalle**: Este metodo puede ser GET(obtener el detalle de un cliente por su clave primaria), PUT ( modificar un cliente) o DELETE (eliminar un cliente por su clave primaria)
- Tipo: GET.
+- **ClienteDetalle**: Este metodo puede ser GET(obtener el detalle de un cliente por su clave primaria), PUT ( modificar un cliente) o DELETE (eliminar un cliente por su clave primaria)
+Tipo: 
+	GET.
 URL:
-```http://127.0.0.1:8000/cliente/clienteDetalle/${cliente_id} ``` ------>Para obtener detalles de un cliente
-Tipo: DELETE.
+	```http://127.0.0.1:8000/cliente/clienteDetalle/${cliente_id} ``` ------>Para obtener detalles de un cliente
+Tipo: 
+	DELETE.
 URL:
-```http://127.0.0.1:8000/cliente/clienteDetalle/${cliente_id} ``` ------>Para para eliminar cliente
-Tipo: PUT.
+	```http://127.0.0.1:8000/cliente/clienteDetalle/${cliente_id} ``` ------>Para para eliminar cliente
+Tipo: 
+	PUT.
 URL:
-```http://127.0.0.1:8000/cliente/clienteDetalle/${cliente_id} ``` ------>Para actualizar un cliente
+	```http://127.0.0.1:8000/cliente/clienteDetalle/${cliente_id} ``` ------>Para actualizar un cliente
 BODY
-```
-{
-"cliente_id": 1,
-"nombre": "Henry Villamizar",
-"correo": "example1@gmmail.co"
-}
- ```
- Parametros: 
- -cliente_id: id del cliente
-- nombre: nombre del cliente
--correo: coreo del cliente
+	```
+	{
+	"cliente_id": 1,
+	"nombre": "Henry Villamizar",
+	"correo": "example1@gmmail.co"
+	}
+	 ```
+Parametros: 
+	- cliente_id: id del cliente
+	- nombre: nombre del cliente
+	- correo: coreo del cliente
 
 
 - **CrearListarProductos**: Este metodo puede ser GET (para listar todos los productos) o POST (para crear un producto)
-Tipo: GET.
+Tipo: 
+	GET.
 URL:
-```http://127.0.0.1:8000/cliente/crearListarProductos/ ``` ------>Para listar todos los clientes
- Tipo: POST
+	```http://127.0.0.1:8000/cliente/crearListarProductos/ ``` ------>Para listar todos los clientes
+Tipo: 
+	POST
 URL:
-```http://127.0.0.1:8000/cliente/crearListarProductos/ ``` ------>Para crear nuevo cliente
+	```http://127.0.0.1:8000/cliente/crearListarProductos/ ``` ------>Para crear nuevo cliente
 BODY
-```
-{
-"nombre": "Postre de milo",
-"precio": 1700,
-"descripcion": "Postre de tres leches"
-}
-```
+	```
+	{
+	"nombre": "Postre de milo",
+	"precio": 1700,
+	"descripcion": "Postre de tres leches"
+	}
+	```
 Parametros: 
-- nombre: nombre del producto
-- precio: precio del producto
-- descripcion: descripcion del producto
+	- nombre: nombre del producto
+	- precio: precio del producto
+	- descripcion: descripcion del producto
 
  
 - **ProductoDetalle**: Este metodo puede ser GET(obtener el detalle de un producto por su clave primaria), PUT ( modificar un producto) o DELETE (eliminar un producto por su clave primaria)
- Tipo: GET.
+Tipo: 
+	GET.
 URL:
-```http://127.0.0.1:8000/cliente/prodcutoDetalle/${producto_id} ``` ------>Para obtener detalles de un producto
+	```http://127.0.0.1:8000/cliente/prodcutoDetalle/${producto_id} ``` ------>Para obtener detalles de un producto
+Tipo: 
+	DELETE.
 URL:
-```http://127.0.0.1:8000/cliente/prodcutoDetalle/${producto_id} ``` ------>Para para eliminar producto
-Tipo: PUT.
+	```http://127.0.0.1:8000/cliente/prodcutoDetalle/${producto_id} ``` ------>Para para eliminar producto
+Tipo: 
+	PUT.
 URL:
-```http://127.0.0.1:8000/cliente/prodcutoDetalle/${producto_id} ``` ------>Para actualizar un producto
+	```http://127.0.0.1:8000/cliente/prodcutoDetalle/${producto_id} ``` ------>Para actualizar un producto
 BODY
-```
-{
-"producto_id":"1"
-"nombre": "Postre de milo",
-"precio": 1700,
-"descripcion": "Postre de tres leches"
-}
- ```
- Parametros: 
-- producto_id: id del producto
-- nombre: nombre del producto
-- precio: precio del producto
-- descripcion: descripcion del producto
+	```
+	{
+	"producto_id":"1"
+	"nombre": "Postre de milo",
+	"precio": 1700,
+	"descripcion": "Postre de tres leches"
+	}
+	 ```
+Parametros: 
+	- producto_id: id del producto
+	- nombre: nombre del producto
+	- precio: precio del producto
+	- descripcion: descripcion del producto
 
 - **ListarProductoPermitido**: Este metodo permite consultar todas las relaciones cliente - producto del sistema, consultarlas filtradas por Cliente y/o producto. Es un metodo GET, por tanto los parametros se pasan por la URL de la siguiente forma:
-Tipo:GET	
+Tipo:
+	GET	
 URL:
-- ```http://127.0.0.1:8000/producto-permitido/listarProductoPermitido/ ```-----> Para consultar todas las relaciones cliente - producto del sistema
-- ```http://127.0.0.1:8000/producto-permitido/listarProductoPermitido/?cliente=1 ```-----> Para consultar las relaciones cliente - producto del cliente con id 1
-- ```http://127.0.0.1:8000/producto-permitido/listarProductoPermitido/?producto=1 ```---> Para consultar las relaciones cliente - producto del prodcuto con id 1
+	 ```http://127.0.0.1:8000/producto-permitido/listarProductoPermitido/ ```-----> Para consultar todas las relaciones cliente - producto del sistema
+	 ```http://127.0.0.1:8000/producto-permitido/listarProductoPermitido/?cliente=1 ```-----> Para consultar las relaciones cliente - producto del cliente con id 1
+	 ```http://127.0.0.1:8000/producto-permitido/listarProductoPermitido/?producto=1 ```---> Para consultar las relaciones cliente - producto del prodcuto con id 1
 
 -**AsociarClienteProducto**: metodo POST que permite crear una nueva relacion cliente - producto en la BD
-Tipo: POST
+Tipo: 
+	POST
 URL:
-```http://127.0.0.1:8000/producto-permitido/asociarClienteProducto/ ```
+	```http://127.0.0.1:8000/producto-permitido/asociarClienteProducto/ ```
 BODY
-```
-{
-"cliente":"1"
-"producto":"1"
-}
- ```
- Parametros: 
-- cliente: id del cliente
-- producto: id del producto
+	```
+	{
+	"cliente":"1"
+	"producto":"1"
+	}
+	 ```
+Parametros: 
+	- cliente: id del cliente
+	- producto: id del producto
 
 
 Mas información sobre la aplicacion puede enocntrar ingresando al administrador:
