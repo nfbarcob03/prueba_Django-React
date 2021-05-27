@@ -1,5 +1,8 @@
 Comandos en postgres para la creacion de la base de datos
 
+---Iniciar postges desde e4l cmd
+psql -U postgres -W -h localhost
+
 --crea la base de datos NEGOCIO
 -- DROP DATABASE "NEGOCIO";
 

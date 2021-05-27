@@ -23,4 +23,7 @@ urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls'), name='documentacion'),
     path('admin/', admin.site.urls, name='admin'),
     path('orden/', include('Orden.urls'), name='orden'),
+    path('cliente/', include('Cliente.urls'), name='cliente'),
+    path('producto/', include('Producto.urls'), name='producto'),
+    path('producto-permitido/', include('ProductoPermitido.urls'), name='producto-permitido'),
 ]

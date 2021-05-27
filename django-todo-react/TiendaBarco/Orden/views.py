@@ -16,6 +16,11 @@ from rest_framework import generics
 
 
 class CreateOrden(APIView):
+    """
+Crear una nueva orden:
+tipo: POST
+input: request body
+ """
     model = Orden
     
     def validarProductosPedidosConProductosPermitidos(self,productos_pedidos,productos_permitidos):
@@ -69,6 +74,11 @@ class CreateOrden(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class OrdenFilterByDate(generics.ListAPIView):
+    """
+Crear listar las ordenes con posibilidad de filtro por cliente y/o fecha de inicial  y/o fecha final
+tipo: GET
+input: 
+ """
     queryset = Orden.objects.all()
     serializer_class = OrdenSerializer
     filter_class = OrdenFilter
