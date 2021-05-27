@@ -207,7 +207,7 @@ URL:
 	 ```http://127.0.0.1:8000/producto-permitido/listarProductoPermitido/?cliente=1 ```-----> Para consultar las relaciones cliente - producto del cliente con id 1
 	 ```http://127.0.0.1:8000/producto-permitido/listarProductoPermitido/?producto=1 ```---> Para consultar las relaciones cliente - producto del prodcuto con id 1
 
--**AsociarClienteProducto**: metodo POST que permite crear una nueva relacion cliente - producto en la BD
+- **AsociarClienteProducto**: metodo POST que permite crear una nueva relacion cliente - producto en la BD
 Tipo: 
 	POST
 URL:
