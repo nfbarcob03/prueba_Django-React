@@ -6,6 +6,6 @@ from rest_framework import routers
 
 
 urlpatterns = [
-    url(r'^creatListarClientes/$', views.CrearListarClientes),
+    url(r'^crearListarClientes/$', views.CrearListarClientes),
     url(r'^clienteDetalle/(?P<pk>[0-9]+)$', views.ClienteDetalle),
 ]

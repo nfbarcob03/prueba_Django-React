@@ -7,11 +7,11 @@ export default class ApiServicesCliente{
 
 //Funciones del modelo cliente
     getAllClientes() {
-        const url = `${API_URL}/cliente/creatListarClientes/`;
+        const url = `${API_URL}/cliente/crearListarClientes/`;
         return axios.get(url).then(response => response.data);
     }
 	createCliente(cliente){
-        const url = `${API_URL}/cliente/creatListarClientes/`;
+        const url = `${API_URL}/cliente/crearListarClientes/`;
         return axios.post(url,cliente);
     }
 	getCliente(cliente_id) {
