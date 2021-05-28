@@ -9,6 +9,11 @@ Este propyecto esta desarrollado con python (framwork Django - Django rest frame
 - instalar Git para clonar el repositorio
 - instalar Nodejs
 - Si va a visualizar el aplicativo desde google chrome debe instalar la extension Allow CORS: Access-Control-Allow-Origin (https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf/related)
+Configuración CORS:
+	Access-Control-Allow-Methods: value GET, PUT, POST, DELETE, HEAD, OPTIONS
+	Access-Control-Allow-Headers: marcar 
+	Access-Control-Allow-Credentials: marcar
+	Access-Control-Allow-Origin: marcar *
 tutorial de uso: https://youtu.be/KruSUqLdxQA
 
 ## Como montar la aplicación
