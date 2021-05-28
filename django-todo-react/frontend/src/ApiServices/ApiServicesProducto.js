@@ -6,25 +6,25 @@ export default class ApiServicesProducto{
     constructor(){}
 	
 //Funciones del modelo producto
-    getAllClientes() {
-        const url = `${API_URL}/producto/creatListarProductos/`;
+    getAllProductos() {
+        const url = `${API_URL}/producto/crearListarProductos/`;
         return axios.get(url).then(response => response.data);
     }
-	createCliente(producto){
-        const url = `${API_URL}/producto/creatListarProductos/`;
+	createProducto(producto){
+        const url = `${API_URL}/producto/crearListarProductos/`;
         return axios.post(url,producto);
     }
-	getCliente(producto_id) {
+	getProducto(producto_id) {
         const url = `${API_URL}/producto/productoDetalle/${producto_id}`;
         return axios.get(url).then(response => response.data);
     }
-    deleteCliente(producto){
+    deleteProducto(producto){
         const url = `${API_URL}/producto/productoDetalle/${producto.producto_id}`;
         return axios.delete(url);
     }
-    updateCliente(producto){
+    updateProducto(producto){
         const url = `${API_URL}/producto/productoDetalle/${producto.producto_id}`;
-        return axios.put(url,customer);
+        return axios.put(url,producto);
     }
 	getProductosByURL(link){
         const url = `${API_URL}${link}`;

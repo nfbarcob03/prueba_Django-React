@@ -2,8 +2,8 @@ import logo from './logo.svg';
 import  React, { Component } from  'react';
 import { BrowserRouter } from  'react-router-dom'
 import { Route, Link } from  'react-router-dom'
-import  { ClienteList } from './Cliente/ClienteController'
-import  { ClienteCreateUpdate } from './Cliente/ClienteController'
+import  { ClienteCreateUpdate, ClienteList } from './Cliente/ClienteController'
+import  { ProductoCreateUpdate, ProductoList } from './Producto/ProductoController'
 import  './App.css';
 
 const BaseLayout = () => (
@@ -15,17 +15,20 @@ const BaseLayout = () => (
   </button>
   <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div className="navbar-nav">
-      <a className="nav-item nav-link" href="/">Clientes</a>
-      <a className="nav-item nav-link" href="/cliente">Crear Cliente</a>
-
+      <a className="nav-item nav-link" href="/cliente-list">Clientes</a>
+	  <a className="nav-item nav-link" href="/producto-list">Productos</a>
+      
     </div>
   </div>
 </nav>
 
     <div className="content">
-      <Route path="/" exact component={ClienteList} />
-      <Route path="/customer/:pk"  component={ClienteCreateUpdate} />
-      <Route path="/customer/" exact component={ClienteCreateUpdate} />
+      <Route path="/cliente-list" exact component={ClienteList} />
+	  <Route path="/producto-list" exact component={ProductoList} />
+      <Route path="/cliente/:cliente_id"  component={ClienteCreateUpdate} />
+      <Route path="/cliente/" exact component={ClienteCreateUpdate} />
+	  <Route path="/producto/:producto_id"  component={ProductoCreateUpdate} />
+      <Route path="/producto/" exact component={ProductoCreateUpdate} />
 
     </div>
 

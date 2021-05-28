@@ -1,12 +1,15 @@
 import  React, { Component } from  'react';
 import  ApiServicesCliente  from  '../ApiServices/ApiServicesCliente';
 
+
 const  clienteService  =  new  ApiServicesCliente();
 
 class  ClienteList  extends  Component {
 
 constructor(props) {
+	
     super(props);
+	
     this.state  = {
         clientes: [],
         nextPageURL:  ''
@@ -24,7 +27,7 @@ componentDidMount() {
 }
 handleDelete(e,cliente_id){
     var  self  =  this;
-    clienteService.deleteCliente({cliente_id :  cliente_id}).then(()=>{
+    clienteService.deleteCliente(cliente_id).then(()=>{
         var  newArr  =  self.state.clientes.filter(function(obj) {
             return  obj.cliente_id  !==  cliente_id;
         });
@@ -55,17 +58,25 @@ render() {
             <tbody>
             {this.state.clientes.map( c  =>
                 <tr  key={c.cliente_id}>
-                <td>{c.pk}  </td>
+                <td>{c.cliente_id}  </td>
                 <td>{c.nombre}</td>
                 <td>{c.correo}</td>
                 <td>
-                <button  onClick={(e)=>  this.handleDelete(e,c.cliente_id) }> Delete</button>
-                <a  href={"/cliente/" + c.cliente_id}> Update</a>
+                <button type="button" class="btn btn-danger"  onClick={(e)=>  this.handleDelete(e,c.cliente_id) }> Delete</button>
+                <a class="btn btn-warning mr-3 ml-3"  href={"/cliente/" + c.cliente_id}> Update</a>
                 </td>
             </tr>)}
             </tbody>
             </table>
-            <button  className="btn btn-primary"  onClick=  {  this.nextPage  }>Next</button>
+            
+			<div class="grid">
+				<div class="row mb-2">
+					<button  className="btn btn-primary mr-5"  onClick=  {  this.nextPage  }>Next</button>
+				</div>
+				<div class="row mt-2">
+					<a class="btn btn-primary mr-5"  href="/cliente" role="button">Crear Nuevo Cliente</a>
+				</div>
+			</div>
         </div>
         );
   }
@@ -93,25 +104,24 @@ class ClienteCreateUpdate extends Component {
       }
 
       handleCreate(){
-        clienteService.createCliente(
-          {
+		var data = {
             "nombre": this.refs.nombre.value,
             "correo": this.refs.correo.value
-        }
-        ).then((result)=>{
+        };
+        clienteService.createCliente(data).then((result)=>{
           alert("Cliente creado con exito!");
         }).catch(()=>{
           alert('Hubo un error creando el cliente. Por favor vuelva a intentarlo.');
         });
       }
       handleUpdate(cliente_id){
-        clienteService.updateCliente(
-          {
-            "cliente_id": cliente_id,
+		  var data = {
+            "cliente_id": parseInt(cliente_id),
             "nombre": this.refs.nombre.value,
             "correo": this.refs.correo.value
-        }
-        ).then((result)=>{
+        };
+		console.log(data)
+        clienteService.updateCliente(data).then((result)=>{
           console.log(result);
           alert("Cliente actualizado con exito!");
         }).catch(()=>{
@@ -121,8 +131,8 @@ class ClienteCreateUpdate extends Component {
       handleSubmit(event) {
         const { match: { params } } = this.props;
 
-        if(params && params.pk){
-          this.handleUpdate(params.pk);
+        if(params && params.cliente_id){
+          this.handleUpdate(params.cliente_id);
         }
         else
         {
@@ -130,11 +140,12 @@ class ClienteCreateUpdate extends Component {
         }
 
         event.preventDefault();
+		
       }
 
       render() {
         return (
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit.bind(this)}>
           <div className="form-group">
             <label>
               Nombre:</label>
@@ -142,9 +153,10 @@ class ClienteCreateUpdate extends Component {
 
             <label>
               Correo:</label>
-              <input className="form-control" type="text" ref='correo'/>
+              <input className="form-control " type="text" ref='correo'/>
 
-            <input className="btn btn-primary" type="submit" value="Submit" />
+            <input className="btn btn-success mr-5 mt-5" type="submit" value="Guardar" />
+			<a class="btn btn-secondary mr-5 mt-5"  href="/cliente-list"> Volver </a>
             </div>
           </form>
         );

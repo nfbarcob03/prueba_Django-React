@@ -65,7 +65,7 @@ DATABASES = {
 - ir a http://localhost:3000/ 
 
 
-#### Servicios API-REST expuestos por el backend:
+### 4. Servicios API-REST expuestos por el backend:
 Actualmente el backend cuenta con los siguietes servicios API-REST
 
 - **CreateOrden**: Este metodo es el empleado para generar una orden para un cliente y sus respectivas orden_detalle. Se le envian parametros como id del cliente y lista de id de productos para generar la orden. El metodo verifica que los productos pedidos esten relacionados en el modelo ProductoPermitido (tabla producto_permitido) con el cliente al que se le hace la orden, tambien verifica que la cantidad de articulos a pedir no sea mayor a 5. Es un meotod POST que lleva un cuerpo (body) en formato json como el que se muestra a continuación:

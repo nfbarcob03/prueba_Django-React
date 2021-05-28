@@ -1,5 +1,8 @@
 import axios from 'axios';
 const API_URL = 'http://localhost:8000';
+const headers = {
+  'Content-Type': 'application/json'
+}
 
 export default class ApiServicesCliente{
 
@@ -12,7 +15,13 @@ export default class ApiServicesCliente{
     }
 	createCliente(cliente){
         const url = `${API_URL}/cliente/crearListarClientes/`;
-        return axios.post(url,cliente);
+		return axios({
+					  method: 'post',
+					  url: url,
+					  data: cliente,
+					  headers: {"Access-Control-Allow-Origin": "*"}
+					});
+        //return axios.post(url,cliente,{headers: headers});
     }
 	getCliente(cliente_id) {
         const url = `${API_URL}/cliente/clienteDetalle/${cliente_id}`;
@@ -24,7 +33,13 @@ export default class ApiServicesCliente{
     }
     updateCliente(cliente){
         const url = `${API_URL}/cliente/clienteDetalle/${cliente.cliente_id}`;
-        return axios.put(url,cliente);
+		return axios({
+					  method: 'put',
+					  url: url,
+					  data: cliente,
+					  headers: {"Access-Control-Allow-Origin": "*"}
+					});
+        //return axios.put(url,cliente,{headers: headers});
     }
 	getClientesByURL(link){
         const url = `${API_URL}${link}`;
