@@ -34,6 +34,8 @@ La aplicación esta diseñada para interactuar con una base de datos en postgres
 para la creacion de la base de datos junto con las tablas necesarias que conforman el modelo de datos y registros mock para las tablas Cliente,
 Producto y Producto_Permitido.
 
+la informaciòn de la base de datos se encuentra en la carpeta Base de datos
+
 **El diagrama E-R de la base de datos se puede encontrar en el archivo "diagrama E-R Base de datos.png"**
 
 ### 2. Montar el backend con django rest framework
@@ -232,3 +234,6 @@ Parametros:
 Mas información sobre la aplicacion puede enocntrar ingresando al administrador:
 ```http://127.0.0.1:8000/admin/```
 ```http://127.0.0.1:8000/admin/doc/```
+
+
+hola jeisson
