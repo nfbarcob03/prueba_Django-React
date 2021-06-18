@@ -237,3 +237,4 @@ Mas información sobre la aplicacion puede enocntrar ingresando al administrador
 
 
 hola jeisson
+chao jeison
